@@ -76,9 +76,9 @@
                     <span id="title">
                         LAPORAN PRESENSI KARYAWAN<br>
                         PERIODE {{ strtoupper($namabulan[$bulan]) }} {{ $tahun }}<br>
-                        Rumah Vaksinasi Pusat<br>
+                        PT. ADAM ADIFA<br>
                     </span>
-                    <span><i>Jln. Raya Tengah No.81 Tengah Kramat Jati Jakarta Timur</i></span>
+                    <span><i>Jln. H. Dahlan No. 75, Kecamatan Sindangrasa, Kabupaten Ciamis</i></span>
                 </td>
             </tr>
         </table>
@@ -197,11 +197,11 @@
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align:bottom" height="100px">
-                    <u>______________________</u><br>
+                    <u>Qiana Aqila</u><br>
                     <i><b>HRD Manager</b></i>
                 </td>
                 <td style="text-align: center; vertical-align:bottom">
-                    <u>______________________</u><br>
+                    <u>Daffa</u><br>
                     <i><b>Direktur</b></i>
                 </td>
             </tr>

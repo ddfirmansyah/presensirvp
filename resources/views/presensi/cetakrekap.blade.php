@@ -98,9 +98,9 @@
                     <span id="title">
                         REKAP PRESENSI KARYAWAN<br>
                         PERIODE {{ strtoupper($namabulan[$bulan]) }} {{ $tahun }}<br>
-                        Rumah Vaksinasi Pusat<br>
+                        PT. ADAM ADIFA<br>
                     </span>
-                    <span><i>Jln. Raya Tengah No.81 Tengah Kramat Jati Jakarta Timur</i></span>
+                    <span><i>Jln. H. Dahlan No. 75, Kecamatan Sindangrasa, Kabupaten Ciamis</i></span>
                 </td>
             </tr>
         </table>
@@ -137,6 +137,13 @@
                     $color = "";
                     for($i=1; $i<=$jmlhari; $i++){
                         $tgl = "tgl_".$i;
+                        $tgl_presensi = $rangetanggal[$i-1];
+                        $search_items = [
+                            'nik' => $r->nik,
+                            'tanggal_libur' => $tgl_presensi
+                        ];
+                        $ceklibur = cekkaryawanlibur($datalibur, $search_items);
+
                         $datapresensi = explode("|",$r->$tgl);
                         if($r->$tgl != NULL){
                             $status = $datapresensi[2];
@@ -169,11 +176,19 @@
                             $jml_alpa += 1;
                             $color = "red";
                         }
+
+                        if(!empty($ceklibur)){
+                            $color = "green";
+                        }
+
+
                 ?>
                     <td style="background-color: {{ $color }}">
 
                         {{ $status }}
-
+                        {{-- @if (!empty($ceklibur))
+                            {{ $ceklibur[0]['keterangan'] }}
+                        @endif --}}
                     </td>
                     <?php
                     }
@@ -186,7 +201,12 @@
                 </tr>
             @endforeach
         </table>
-
+        <h4>Keterangan Libur :</h4>
+        <ol>
+            @foreach ($harilibur as $d)
+                <li>{{ date('d-m-Y', strtotime($d->tanggal_libur)) }} - {{ $d->keterangan }}</li>
+            @endforeach
+        </ol>
         <table width="100%" style="margin-top:100px">
             <tr>
                 <td></td>
@@ -194,15 +214,17 @@
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align:bottom" height="100px">
-                    <u>______________________</u><br>
+                    <u>Qiana Aqila</u><br>
                     <i><b>HRD Manager</b></i>
                 </td>
                 <td style="text-align: center; vertical-align:bottom">
-                    <u>______________________</u><br>
+                    <u>Daffa</u><br>
                     <i><b>Direktur</b></i>
                 </td>
             </tr>
         </table>
+
+
     </section>
 
 </body>
